@@ -1,5 +1,5 @@
 import { Router } from "@vaadin/router";
-import { LitElement, html } from "lit";
+import { LitElement, css, html } from "lit";
 import { routes } from "../app.routes";
 
 export class AppComponent extends LitElement {
@@ -15,8 +15,7 @@ export class AppComponent extends LitElement {
 
   render() {
     return html`
-      
-      <header class="primary-container">
+      <header class="primary-container" style="padding: 20px 10px;">
         <nav>
           <button class="large-elevate primary">
             <img src="https://apps.odoo.com/apps/icon_image?module_id=51006"/>
