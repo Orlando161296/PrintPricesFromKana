@@ -2,6 +2,7 @@ import { LitElement, html } from "lit";
 import { kanaService } from "../../services/kanaservice";
 import { tap } from "rxjs";
 import "./home.style.css";
+
 export class Home extends LitElement {
   constructor() {
     super();
@@ -40,12 +41,33 @@ export class Home extends LitElement {
           "https://www.supermercadoluxor.com/wp-content/uploads/2020/11/Ketchup-Tiquire-Flores-397G.jpg",
         ],
       },
+      {
+        name: "Salsa tiquire Flores 280g",
+        price: 27.5,
+        images: [
+          "https://www.supermercadoluxor.com/wp-content/uploads/2020/11/Ketchup-Tiquire-Flores-397G.jpg",
+        ],
+      },
+      {
+        name: "Salsa tiquire Flores 280g",
+        price: 27.5,
+        images: [
+          "https://www.supermercadoluxor.com/wp-content/uploads/2020/11/Ketchup-Tiquire-Flores-397G.jpg",
+        ],
+      },
+      {
+        name: "Salsa tiquire Flores 280g",
+        price: 27.5,
+        images: [
+          "https://www.supermercadoluxor.com/wp-content/uploads/2020/11/Ketchup-Tiquire-Flores-397G.jpg",
+        ],
+      },
     ];
     this.KanaSrv = kanaService;
   }
 
   firstUpdated() {
-    const reuslt$ = this.KanaSrv.listProduct.pipe(
+    const reuslt$ = this.KanaSrv.listOfChangedProducts.pipe(
       tap((response) => (this.productChanged = response)),
       tap(() => this.requestUpdate()),
       tap(() => console.log("productos locales", this.productChanged))
@@ -55,12 +77,18 @@ export class Home extends LitElement {
 
   render() {
     return html`
-      <div class="container-cards">
-        ${this.testingProduct.map((product) => {
-          return html` <product-card .product=${product}></product-card> `;
-        })}
-
-        <button @click=${this.print} id="btn_print">Imprimir Todos</button>
+      <div class="container-btn">
+        <button class="small-round large small-elevate">
+          <img class="responsive" src="https://img.icons8.com/?size=512&id=n9P6681cdRgv&format=png" />
+          <span>Imprimir Todos</span>
+        </button>
+      </div>
+      <div class="container">
+        <div class="container-cards">
+          ${this.productChanged.map((product) => {
+            return html` <product-card .product=${product}></product-card> `;
+          })}
+        </div>
       </div>
     `;
   }

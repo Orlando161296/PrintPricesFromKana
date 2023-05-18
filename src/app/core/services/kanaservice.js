@@ -10,13 +10,20 @@ import { fromFetch } from 'rxjs/fetch';
 class KanaService{
 
   constructor() {
-    this.listProduct = new BehaviorSubject([]);    
+    this.listOfChangedProducts = new BehaviorSubject([]);
+    this.listProducts = new BehaviorSubject([]);
     this.dolarValue = new BehaviorSubject(1);
     this.divisa = 1;
 
-    this.getListProductFromKana$()
+    this.getListProduct$()
+    .pipe(
+      tap(response => this.listProducts.next(response))
+    )
+    .subscribe();
+
+    this.getListOfChangedProduct$()
       .pipe(
-        tap(response => this.listProduct.next(response)),
+        tap(response => this.listOfChangedProducts.next(response)),
       )
       .subscribe();
 
@@ -52,11 +59,58 @@ class KanaService{
 
   }
 
+
+  getListProduct$(){
+    const query = `
+    query {
+      currentPriceList{
+        products(first: 500){
+          edges{
+            node{
+              product{
+                id
+                name
+                images
+                presentation
+                departments {
+                  description
+                }
+                pricePublished{
+                  priceBase {
+                    amount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }`
+
+  const data$ = this.getQuery(query)
+    .pipe(
+      map(response => response.data.currentPriceList.products.edges.map(product => {
+
+        const { pricePublished, ...restProduct } = product.node.product;
+
+        const productConstruted = {
+          ...restProduct,
+          price: Number(pricePublished?.priceBase.amount * this.divisa),
+        }
+
+        return productConstruted;
+      })),
+    );
+  return data$;
+  }
+  
+
+
   /**
    * Metodo que apunta a los productos en backend de kana
    * @returns un observable
    */
-  getListProductFromKana$(){
+  getListOfChangedProduct$(){
     const query = `
       query {
         currentPriceList{
