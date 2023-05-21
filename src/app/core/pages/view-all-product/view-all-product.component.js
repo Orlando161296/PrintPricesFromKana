@@ -64,14 +64,16 @@ export class PrintProductComponent extends LitElement {
       ],
     },];
     this.KanaSrv= kanaService;
+    this.loader = false;
   }
 
   firstUpdated(){
     const result$ =this.KanaSrv.getListProduct$()
     .pipe(
       tap(response => this.ListProduct = response),
+      tap(()=> this.loader = true),
       tap(() => this.requestUpdate()),
-      tap(()=> console.log("LISTA DE PRODUCTOS ", this.ListProduct))
+
     )
     result$.subscribe();
   }
@@ -79,13 +81,20 @@ export class PrintProductComponent extends LitElement {
   render() {
     return html`
       <searchbar-component></searchbar-component>
-      <div class="container">
+    
+    ${(this.loader)
+      ? html`
+        <div class="container">
         <div class="container-cards">
-          ${this.ListProduct.map((product) => {
-            return html` <product-card .product=${product}></product-card> `;
-          })}
+        ${this.ListProduct.map((product) => {
+          return html` <product-card .product=${product}></product-card> `;
+        })}
         </div>
-      </div>
+         </div>
+      `
+      : html`<loader-component></loader-component>`
+    }
+     
     `;
   }
 

@@ -20,10 +20,6 @@ export class TopBarComponent extends LitElement {
               <img class="responsive" src="https://img.icons8.com/?size=512&id=CUByzzUJpaet&format=png" />
               <span>Todos los Productos</span>
             </button>
-            <button class="small-round" @click=${this.closeProgram}>
-              <img class="responsive" src="https://img.icons8.com/?size=512&id=TmshBLOFvt3H&format=png" />
-              <span>Salir</span>
-            </button>
           </nav>
         </header>
       </div>

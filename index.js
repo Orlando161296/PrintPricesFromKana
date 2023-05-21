@@ -4,3 +4,4 @@ import { ProductCardComponent } from "./src/app/core/Components/product-card/pro
 import { PrintProductComponent } from "./src/app/core/pages/view-all-product/view-all-product.component.js";
 import { TopBarComponent } from "./src/app/core/Components/top-bar/top-bar.component.js";
 import { SearchBarComponent } from "./src/app/core/Components/search-bar/search-bar.component.js";
+import { LoaderComponent } from "./src/app/core/Components/loader/loader.component.js";
