@@ -80,6 +80,7 @@ export class PrintProductComponent extends LitElement {
 
   render() {
     return html`
+    <h1 class="center-align small">Lista de Productos</h1>
       <searchbar-component></searchbar-component>
     
     ${(this.loader)

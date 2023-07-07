@@ -77,7 +77,8 @@ export class Home extends LitElement {
 
   render() {
     return html`
-      <div class="container-btn">
+    <h1 class="center-align small">Productos Cambiados</h1>
+      <div class="container-btn responsive">
         <button class="small-round large small-elevate">
           <img class="responsive" src="https://img.icons8.com/?size=512&id=n9P6681cdRgv&format=png" />
           <span>Imprimir Todos</span>
