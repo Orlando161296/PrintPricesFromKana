@@ -30,15 +30,15 @@ export class ProductCardComponent extends LitElement {
   render() {
     
     return html`
-    <article
-    class="round primary-container"
+    <div
+    class="card-content"
     style="margin-top: 20px; max-width: 400px; display: grid; "
-  >
+    >
     <div class="row">
-      <img class="circle large" src="${this.product.images}" />
+      <img class="card-image" src="${this.product.images}" />
       <div class="max" id="${this.product.name}">
-        <h6 id="nombre">${this.product.name}</h6>
-        <h1 id="precio">Bs. ${this.product.price.toFixed(2)}</h1>
+        <h6 class="title" id="nombre">${this.product.name} ${this.product.presentation}</h6>
+        <h1 class="description" id="precio">Bs. ${this.product.price.toFixed(2)}</h1>
       </div>
     </div>
     <nav>
@@ -46,7 +46,7 @@ export class ProductCardComponent extends LitElement {
         Imprimir precio
       </button>
     </nav>
-  </article>
+  </div>
     `;
   }
 

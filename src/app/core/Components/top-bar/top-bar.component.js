@@ -6,10 +6,8 @@ export class TopBarComponent extends LitElement {
   constructor() {
     super();
   }
-
-  render() {
-    return html`
-      <div class="container-topbar" style="backgraund: #683FBF">
+  /**
+ * <div class="container-topbar">
         <header class="primary-container">
           <nav class="right-align">
             <button class="small-round" @click=${this.goToProductChange}>
@@ -23,18 +21,25 @@ export class TopBarComponent extends LitElement {
           </nav>
         </header>
       </div>
+ */
+  render() {
+    return html`
+      <div class="navbar-menu-container">
+        <button @click="${this.goToPrintProduct}">Todos los Productos</button>
+        <button @click="${this.goToProductChange}">Productos Cambiados</button>
+      </div>
     `;
   }
-  goToProductChange(){
-    Router.go('/home/')
-  }  
+  goToProductChange() {
+    Router.go("/home/");
+  }
 
-  goToPrintProduct(){
-    Router.go('/print/')
+  goToPrintProduct() {
+    Router.go("/print/");
     // console.log("hace algo");
   }
 
-  closeProgram(){
+  closeProgram() {
     // console.log("CERRANDO PROGRAMA");
     window.close();
   }

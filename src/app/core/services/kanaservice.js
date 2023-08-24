@@ -64,7 +64,7 @@ class KanaService{
     const query = `
     query {
       currentPriceList{
-        products(first: 50){
+        products(first: 10){
           edges{
             node{
               product{
