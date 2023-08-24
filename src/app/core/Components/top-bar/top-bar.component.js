@@ -9,7 +9,7 @@ export class TopBarComponent extends LitElement {
 
   render() {
     return html`
-      <div class="container-topbar">
+      <div class="container-topbar" style="backgraund: #683FBF">
         <header class="primary-container">
           <nav class="right-align">
             <button class="small-round" @click=${this.goToProductChange}>

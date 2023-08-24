@@ -64,7 +64,7 @@ class KanaService{
     const query = `
     query {
       currentPriceList{
-        products(first: 500){
+        products(first: 50){
           edges{
             node{
               product{
@@ -114,7 +114,7 @@ class KanaService{
     const query = `
       query {
         currentPriceList{
-          productsPriceChanged(first: 100){
+          productsPriceChanged(first: 1000){
             edges{
               node{
                 product{
