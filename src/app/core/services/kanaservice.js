@@ -64,7 +64,7 @@ class KanaService{
     const query = `
     query {
       currentPriceList{
-        products(first: 10){
+        products(first: 600){
           edges{
             node{
               product{
@@ -136,7 +136,6 @@ class KanaService{
 
     const data$ = this.getQuery(query)
       .pipe(
-        // tap(response => console.log(response.data.currentPriceList.productsPriceChanged.edges)),
         map(response => response.data.currentPriceList.productsPriceChanged.edges.map(product => {
 
           const { pricePublished, ...restProduct } = product.node.product;

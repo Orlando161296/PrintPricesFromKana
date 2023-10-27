@@ -1,6 +1,6 @@
 import { Router } from "@vaadin/router";
 import { LitElement, css, html } from "lit";
-import { routes } from "../app.routes";
+import { routes } from "./app.routes";
 import "./app.style.css";
 
 export class AppComponent extends LitElement {
@@ -16,16 +16,13 @@ export class AppComponent extends LitElement {
 
   render() {
     return html`
-    <topbar-component></topbar-component>
-      <div class="app-container">
         <div id="outlet"></div>
-      </div>
     `;
   }
     
-  createRenderRoot() {
-    return this;
-  }
+  // createRenderRoot() {
+  //   return this;
+  // }
 }
 
 customElements.define("app-root", AppComponent);

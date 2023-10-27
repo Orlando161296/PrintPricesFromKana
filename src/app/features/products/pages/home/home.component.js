@@ -1,9 +1,23 @@
-import { LitElement, html } from "lit";
-import { kanaService } from "../../services/kanaservice";
+import { LitElement, html, css } from "lit";
+import { kanaService } from "../../../../core/services/kanaservice";
 import { tap } from "rxjs";
 import "./home.style.css";
 
 export class Home extends LitElement {
+
+  static styles = css`
+  .container-cards {
+    margin-top: 150px;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-around;
+    min-height: calc(100vh - 125px - 104px);
+}
+
+  `;
+
   constructor() {
     super();
     this.productChanged = [];
@@ -68,9 +82,10 @@ export class Home extends LitElement {
 
   firstUpdated() {
     const reuslt$ = this.KanaSrv.listOfChangedProducts.pipe(
+      tap( response => console.log(response)),
       tap((response) => (this.productChanged = response)),
       tap(() => this.requestUpdate()),
-      tap(() => console.log("productos locales", this.productChanged))
+      // tap(() => console.log("productos locales", this.productChanged))
     );
     reuslt$.subscribe();
   }
@@ -80,6 +95,7 @@ export class Home extends LitElement {
       <div class="container-home">
       </div>
       <div class="container">
+      <h1>Lista de Productos</h1>
         <div class="container-cards">
           ${this.productChanged.map((product) => {
             return html` <product-card .product=${product}></product-card> `;
@@ -104,8 +120,8 @@ export class Home extends LitElement {
     });
   }
 
-  createRenderRoot() {
-    return this;
-  }
+  // createRenderRoot() {
+  //   return this;
+  // }
 }
-customElements.define("home-component", Home);
+customElements.define("home-page", Home);
