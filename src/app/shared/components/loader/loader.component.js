@@ -1,6 +1,6 @@
 import { LitElement, html } from "lit";
 import { Router } from "@vaadin/router";
-import './loader.style.css'
+import "./loader.style.css";
 
 export class LoaderComponent extends LitElement {
   static properties = {};
@@ -10,8 +10,13 @@ export class LoaderComponent extends LitElement {
 
   render() {
     return html`
-    <div class="center-align" style="margin-top: 300px;">
-    <a class="loader large"></a>
+    <div class="container">
+    
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     </div>
     `;
   }
