@@ -20,9 +20,9 @@ export class AppComponent extends LitElement {
     `;
   }
     
-  // createRenderRoot() {
-  //   return this;
-  // }
+  createRenderRoot() {
+    return this;
+  }
 }
 
 customElements.define("app-root", AppComponent);

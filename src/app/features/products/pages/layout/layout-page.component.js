@@ -9,8 +9,8 @@ export class LayoutPage extends LitElement {
   render() {
     return html`
     <topbar-component></topbar-component>
-    <div>
-    <slot style="margin-top:10px"></slot>
+    <div style="margin-top:120px">
+    <slot ></slot>
     </div>
     `;
   }

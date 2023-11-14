@@ -3,6 +3,7 @@ import {
     tap,
     mergeMap,
     BehaviorSubject,
+    catchError
   } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 
@@ -10,22 +11,8 @@ import { fromFetch } from 'rxjs/fetch';
 class KanaService{
 
   constructor() {
-    this.listOfChangedProducts = new BehaviorSubject([]);
-    this.listProducts = new BehaviorSubject([]);
     this.dolarValue = new BehaviorSubject(1);
     this.divisa = 1;
-
-    this.getListProduct$()
-    .pipe(
-      tap(response => this.listProducts.next(response))
-    )
-    .subscribe();
-
-    this.getListOfChangedProduct$()
-      .pipe(
-        tap(response => this.listOfChangedProducts.next(response)),
-      )
-      .subscribe();
 
     this.getDolarValue$()
       .pipe(
@@ -64,7 +51,7 @@ class KanaService{
     const query = `
     query {
       currentPriceList{
-        products(first: 600){
+        products(first: 500){
           edges{
             node{
               product{
@@ -147,6 +134,9 @@ class KanaService{
 
           return productConstruted;
         })),
+        catchError(error => {
+          console.error('Ocurrió un error:', error);
+        })
       );
     return data$;
   }

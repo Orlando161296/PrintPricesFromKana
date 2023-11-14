@@ -8,8 +8,8 @@ import { LayoutPage } from "./app/features/products/pages/layout/layout-page.com
 
 //FEATURES
 import { ProductCardComponent } from "./app/features/products/components/product-card/product-card.component.js";
-import { PrintProductComponent } from "./app/features/products/pages/view-all-product/view-all-product.component.js";
-import { Home } from "./app/features/products/pages/home/home.component.js";
+import { ListProductComponent } from "./app/features/products/pages/list-product/list-product.component.js";
+import { Home } from "./app/features/products/pages/products-changed/products-changed.component.js";
 
 // loader-component
 import { LoaderComponent } from "./app/shared/components/loader/loader.component.js";

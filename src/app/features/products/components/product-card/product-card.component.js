@@ -19,6 +19,20 @@ export class ProductCardComponent extends LitElement {
     justify-content: space-around;
 }
 
+.card-button {
+  font-size: 20px; /* Ajusta este valor a tu gusto */
+  background-color: #4CAF50; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  padding: 15px 32px; /* Espaciado interno del botón */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Remueve el subrayado del texto */
+  display: inline-block;
+  font-weight: bold; /* Texto en negrita */
+  border-radius: 4px; /* Bordes redondeados del botón */
+  border: none; /* Remueve el borde del botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+}
+
 .favorite {
     position: absolute;
     top: 10px;
@@ -26,13 +40,15 @@ export class ProductCardComponent extends LitElement {
 }
 
 .title {
-    text-align: center;
-    font-weight: 500;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px; /* Ajusta este valor a tu gusto */
 }
 
 .description {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
+  font-size: 26px; /* Ajusta este valor a tu gusto */
 }
 
 .card-image {
@@ -97,7 +113,7 @@ export class ProductCardComponent extends LitElement {
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
-      width: 100%;
+      width: 100%;button
       padding: 5px;
     }
 
@@ -107,9 +123,18 @@ export class ProductCardComponent extends LitElement {
     }
 
     .card-button {
-      grid-area: 2 / 2 / 3 / 5;
-      width: 100%;
-    }
+      font-size: 20px; /* Ajusta este valor a tu gusto */
+      background-color: #4CAF50; /* Color de fondo del botón */
+      color: white; /* Color del texto del botón */
+      padding: 15px 32px; /* Espaciado interno del botón */
+      text-align: center; /* Alineación del texto */
+      text-decoration: none; /* Remueve el subrayado del texto */
+      display: inline-block;
+      font-weight: bold; /* Texto en negrita */
+      border-radius: 4px; /* Bordes redondeados del botón */
+      border: none; /* Remueve el borde del botón */
+      cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+  }
 
     p {
       margin: 0;
@@ -128,27 +153,25 @@ export class ProductCardComponent extends LitElement {
 
   render() {
     return html`
-      <div
-        class="card-content"
-      >
-        <div class="row">
-          <img class="card-image" src="${this.product.images}" />
-          <div class="max" id="producto">
-            <h6 class="title" id="nombre">
-              ${this.product.name} ${this.product.presentation}
-            </h6>
-            <h1 class="description" id="precio">
-              Bs. ${this.product.price.toFixed(2)}
-            </h1>
-          </div>
-        </div>
-        <nav>
-          <button class="round primary" @click=${this.PrintPrice}>
-            Imprimir precio
-          </button>
-        </nav>
-      </div>
-      <div id="iframeContainer"></div>
+    <div class="card-content">
+    <!-- Imagen del producto -->
+    <div class="card-image">
+        <img class="image" src="${this.product.images}" />
+    </div>
+
+    <!-- Descripción del producto -->
+    <div class="card-description">
+        <p class="title">${this.product.name} ${this.product.presentation}</p>
+        <p class="description">Bs. ${this.product.price.toFixed(2)}</p>
+    </div>
+
+    <!-- Botón para imprimir el precio -->
+    <button 
+    class="card-button"
+    @click=${this.PrintPrice}>
+        Imprimir precio
+    </button>
+</div>
 
     `;
   }
@@ -164,7 +187,7 @@ export class ProductCardComponent extends LitElement {
     pageOrientation: 'landscape',
     styles: {
       header: {
-        fontSize: 48, // Tamaño de letra más grande
+        fontSize: 40, // Tamaño de letra más grande
         bold: true,
       },
     }
